@@ -1,0 +1,129 @@
+{
+  "name": "express-angular-boilerplate",
+  "version": "1.0.0",
+  "description": "Express angular boilerplate",
+  "author": "Diego Mello <diegolmello@gmail.com>",
+  "license": "MIT",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "start": "node server/dist/index.js",
+    "dev": "nodemon server/src/index.js --exec \"node -r babel-register\"",
+    "clean": "rimraf server/dist",
+    "build": "npm run clean && mkdir -p server/dist && babel server/src -s -D -d server/dist",
+    "test": "jest --watch",
+    "lint": "esw -w src server/test"
+  },
+  "keywords": [
+    "express",
+    "babel",
+    "boilerplate",
+    "scaffold",
+    "es6",
+    "es2015",
+    "es2016",
+    "es2017",
+    "jest",
+    "eslint"
+  ],
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "body-parser": "^1.17.1",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "express-validation": "^1.0.2",
+    "helmet": "^3.8.1",
+    "joi": "^10.6.0",
+    "knex": "^0.13.0",
+    "morgan": "^1.7.0",
+    "pg": "^7.2.0",
+    "rimraf": "^2.6.1",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^20.0.0",
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^20.0.0",
+    "eslint-watch": "^3.1.0",
+    "jest": "^20.0.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./server/src"
+          ],
+          "alias": {
+            "config": "./config",
+            "client": "./client"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "plugins": [
+      "import",
+      "jest"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "jest/no-focused-tests": 2,
+      "jest/no-identical-title": 2,
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "directories": {
+    "test": "server/test"
+  }
+}
